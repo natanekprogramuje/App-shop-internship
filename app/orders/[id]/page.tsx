@@ -1,6 +1,6 @@
 "use client";
-import { useState, useEffect, use } from "react";
-import { useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
+import { useRouter, useParams } from "next/navigation";
 import Link from "next/link";
 import { useLang } from "@/contexts/LanguageContext";
 import { catalog, getCatalogById } from "@/lib/catalog";
@@ -13,8 +13,8 @@ const DEPARTMENTS = [
   "Operations", "Legal", "R&D", "Customer Support",
 ];
 
-export default function OrderDetailPage({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = use(params);
+export default function OrderDetailPage() {
+  const { id } = useParams() as { id: string };
   const router = useRouter();
   const { t, lang } = useLang();
 
